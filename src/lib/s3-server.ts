@@ -50,6 +50,8 @@ export async function downloadFromS3(file_key: string) {
     }
 
     const file_name = `/tmp/pdf-${Date.now()}.pdf`;
+    console.log(file_name);
+
     return obj.Body; // Return or write file content to the filesystem as needed
   } catch (error) {
     console.log("S3 download error:", error);

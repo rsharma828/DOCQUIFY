@@ -5,7 +5,7 @@ import { getS3Url } from "@/lib/s3";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   const { userId } = await auth();
   if (!userId) {
     return NextResponse.json({ error: "unauthorised" }, { status: 401 });
@@ -14,7 +14,7 @@ export async function POST(req: Request, res: Response) {
     const body = await req.json();
     const { file_key, file_name } = body;
     console.log(file_key, file_name);
-    const pages = await loadS3IntoPinecone(file_key);
+    await loadS3IntoPinecone(file_key);
     // return NextResponse.json({ pages });
     const chat_id = await db
       .insert(chats)

@@ -7,7 +7,6 @@ import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { messages } from "../lib/db/schema";
 import { useRouter } from "next/navigation";
 const FileUpload = () => {
   const router = useRouter();

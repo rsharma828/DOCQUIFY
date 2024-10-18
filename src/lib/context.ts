@@ -6,10 +6,7 @@ const pc = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY!,
 });
 
-async function getMatchesFromEmbeddings(
-  embeddings: number[],
-  fileKey: string
-): Promise<any[]> {
+async function getMatchesFromEmbeddings(embeddings: number[], fileKey: string) {
   console.log("Initializing Pinecone index");
   const index = pc.index("quizdoc");
 
@@ -45,7 +42,9 @@ export async function getContext(
       pageNumber: number;
     };
 
-    let docs = qualifyingDocs.map((match) => (match.metadata as Metadata).text);
+    const docs = qualifyingDocs.map(
+      (match) => (match.metadata as Metadata).text
+    );
     return docs.join("\n").substring(0, 3000);
   } catch (error) {
     console.error("Error getting context:", error);
