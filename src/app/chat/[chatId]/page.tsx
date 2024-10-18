@@ -15,6 +15,8 @@ type Props = {
   };
 };
 
+//chatpage in which pdf , sidebar and chatbox is placed
+
 const ChatPage = async ({ params: { chatId } }: Props) => {
   const { userId } = await auth();
   if (!userId) {

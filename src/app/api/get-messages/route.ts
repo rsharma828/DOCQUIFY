@@ -3,6 +3,8 @@ import { messages } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
+//upon opening old chat then retrieving the chat
+
 export const POST = async (req: Request) => {
   const { chatId } = await req.json();
   const _messages = await db

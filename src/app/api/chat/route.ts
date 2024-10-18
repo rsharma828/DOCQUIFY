@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 export const runtime = "edge";
+//upload to OpenAI and getting response from there
 
 const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
