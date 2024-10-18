@@ -1,3 +1,5 @@
+// /api/stripe
+
 import { db } from "@/lib/db";
 import { userSubscriptions } from "@/lib/db/schema";
 import { stripe } from "@/lib/stripe";
@@ -6,8 +8,6 @@ import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 const return_url = process.env.NEXT_BASE_URL + "/";
-
-//creating stripe session for upgrading to pro
 
 export async function GET() {
   try {
@@ -44,10 +44,10 @@ export async function GET() {
           price_data: {
             currency: "USD",
             product_data: {
-              name: "ChatPDF Pro",
+              name: "docQuify Pro",
               description: "Unlimited PDF sessions!",
             },
-            unit_amount: 500,
+            unit_amount: 2000,
             recurring: {
               interval: "month",
             },
