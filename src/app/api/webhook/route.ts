@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     const subscription = await stripe.subscriptions.retrieve(
       session.subscription as string
     );
-
+    console.log("above creation of db");
     await db
       .update(userSubscriptions)
       .set({
@@ -56,6 +56,7 @@ export async function POST(req: Request) {
         ),
       })
       .where(eq(userSubscriptions.stripeSubscriptionId, subscription.id));
+    console.log("db created");
   }
 
   return new NextResponse(null, { status: 200 });
